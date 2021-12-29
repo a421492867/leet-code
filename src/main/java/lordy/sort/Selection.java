@@ -18,7 +18,7 @@ public class Selection {
     }
 
     public static void main(String[] args) {
-        Integer[] nums = {2,5,8,3,5,0,7,19,4};
+        Integer[] nums = {2,0,1};
         sort(nums);
         for(int s : nums){
             System.out.println(s);
