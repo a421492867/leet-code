@@ -10,7 +10,6 @@ import java.util.List;
  * No.51
  * 每一行、列、左斜、右斜最多只有一个皇后
  */
-//TODO
 public class NQueens {
 
     public static List<List<String>> solveNQueens(int n){
