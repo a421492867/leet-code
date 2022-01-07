@@ -16,7 +16,6 @@ public class CombinationSum {
 
     public static List<List<Integer>> combinationSum2(int[] candidates, int target){
         List<List<Integer>> res = new ArrayList<>();
-        int m = candidates.length;
         List<Integer> indexList = new ArrayList<>();
         Arrays.sort(candidates);
         backtrack(0, res, indexList, candidates, target);
@@ -38,7 +37,7 @@ public class CombinationSum {
             return;
         }
         if(i >= candidates.length) return;
-        for(int j = i; j < candidates.length; j++){
+        for(int j = i; j < candidates.length && candidates[i] + result <= target; j++){
             indexList.add(j);
             backtrack(j + 1, res, indexList, candidates, target);
             indexList.remove(indexList.size() - 1);
@@ -47,8 +46,12 @@ public class CombinationSum {
     }
 
     public static void main(String[] args) {
-        int[] candidates = {14,6,25,9,30,20,33,34,28,30,16,12,31,9,9,12,34,16,25,32,8,7,30,12,33,20,21,29,24,17,27,34,11,17,30,6,32,21,27,17,16,8,24,12,12,28,11,33,10,32,22,13,34,18,12};
+        int[] candidates = {1,1,1,1,1,1,1,1,1,1,1,1,1,1,1,1,1,1,1,1,1,1,1,1,1};
         int target = 27;
-        System.out.println(JSON.toJSONString(combinationSum2(candidates, target)));
+        long start = System.nanoTime();
+        List<List<Integer>> res = combinationSum2(candidates, target);
+        long end = System.nanoTime();
+        System.out.println(JSON.toJSONString(res));
+        System.out.println(end - start);
     }
 }
