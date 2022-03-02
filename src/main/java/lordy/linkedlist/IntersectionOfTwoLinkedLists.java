@@ -1,9 +1,6 @@
 package lordy.linkedlist;
 
-import java.util.HashSet;
-import java.util.Iterator;
-import java.util.LinkedHashMap;
-import java.util.Set;
+import java.util.*;
 
 /**
  * No.160
