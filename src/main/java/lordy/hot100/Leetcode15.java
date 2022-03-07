@@ -7,9 +7,7 @@ import java.util.Arrays;
 import java.util.Collections;
 import java.util.List;
 
-/**
- * 超出时间限制
- */
+
 public class Leetcode15 {
 
     public List<List<Integer>> threeSum(int[] nums){
