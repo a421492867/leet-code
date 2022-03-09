@@ -4,7 +4,7 @@ package lordy.strings;
  * No.28
  * KMP
  */
-public class InplementstrStr {
+public class ImplementstrStr {
 
     public static int strStr(String haystack, String needle){
         if(needle.length() == 0){
