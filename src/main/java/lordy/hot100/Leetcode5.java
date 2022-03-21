@@ -27,7 +27,7 @@ public class Leetcode5 {
             l--;
             r++;
         }
-        return r - l + 1;
+        return r - l - 1;
     }
 
     public static void main(String[] args) {
