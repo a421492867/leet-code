@@ -3,7 +3,6 @@ import java.util.Collections;
 import java.util.Scanner;
 
 
-//TODO  看不到错误用例什么样子
 public class Codeforces1675E {
 
 
@@ -19,7 +18,7 @@ public class Codeforces1675E {
         int index = -1;
         for(int i = 0; i < size; i++){
             char cur = s.charAt(i);
-            if(cur < maxLetter){
+            if(cur <= maxLetter){
                 maxHeight = Math.max(maxHeight, cur - 'a');
                 sb.append('a');
             }else{
