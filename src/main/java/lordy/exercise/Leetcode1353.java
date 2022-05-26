@@ -1,31 +1,40 @@
 package lordy.exercise;
 
 import java.util.Arrays;
+import java.util.PriorityQueue;
 
 public class Leetcode1353 {
 
-    public int maxEvents(int[][] events){
-        Arrays.sort(events, (o1, o2) -> {
-            if(o1[1] == o2[1]){
-                return o1[0] - o2[0];
-            }
-            return o1[1] - o2[1];
-        });
-        int day = events[0][0];
 
-        int res = 1;
-        day++;
-        for(int i = 1; i < events.length; i++){
-            if(events[i][0] >= day){
-                res++;
-                day = events[i][0] + 1;
+
+    public int maxEvents(int[][] events){
+
+        Arrays.sort(events, (a, b) -> a[0] - b[0]);
+        PriorityQueue<int[]> pq = new PriorityQueue<>((a, b) -> a[1] - b[1]);
+        int n = events.length;
+        int i = 0;
+        int day = 1;
+        int ans = 0;
+        while (i < n || !pq.isEmpty()){
+            while (i < n && events[i][0] == day){
+                int[] event = events[i];
+                pq.offer(event);
+                i++;
             }
-            else if(events[i][1] >= day){
-                res++;
+            if(pq.isEmpty()){
                 day++;
+                continue;
             }
+            while (!pq.isEmpty() && pq.peek()[1] < day){
+                pq.poll();
+            }
+            if(!pq.isEmpty()){
+                pq.poll();
+                ans++;
+            }
+            day++;
         }
-        return res;
+        return ans;
     }
 
     public static void main(String[] args) {
