@@ -8,10 +8,22 @@ import java.util.Arrays;
 public class MergeSortedArray {
 
     public static void merge(int[] nums1, int m, int[] nums2, int n){
-        for(int i = 0; i < n; i++){
-            nums1[m + i] = nums2[i];
+       int end = m + n - 1;
+       m--;
+       n--;
+        while(n >=0 || m >= 0){
+            if(n < 0){
+                nums1[end--] = nums1[m--];
+            }else if(m < 0){
+                nums1[end--] = nums2[n--];
+            }else{
+                if(nums1[m] < nums2[n]){
+                    nums1[end--] = nums2[n--];
+                }else{
+                    nums1[end--] = nums1[m--];
+                }
+            }
         }
-        Arrays.sort(nums1);
     }
 
     public static void main(String[] args) {
