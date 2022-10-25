@@ -14,7 +14,7 @@ public class Leetcode4 {
             mid = l + (r - l) / 2;
             int b = total / 2 - mid;
             int ll = mid == 0 ? Integer.MIN_VALUE : nums1[mid - 1];
-            int lr = mid == n ? Integer.MAX_VALUE : nums1[mid];
+            int lr = mid == m ? Integer.MAX_VALUE : nums1[mid];
             int rl = b == 0 ? Integer.MIN_VALUE : nums2[b - 1];
             int rr = b == n ? Integer.MAX_VALUE : nums2[b];
             if(ll > rr){
