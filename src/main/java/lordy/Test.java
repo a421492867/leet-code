@@ -8,12 +8,18 @@ public class Test {
 
     public static void main(String[] args) {
         List<Integer> nums = new ArrayList<>();
-        nums.add(29);
-        nums.add(35);
-        nums.add(29);
         nums.add(14);
-        nums.add(14);
+        nums.add(31);
         nums.add(12);
+        nums.add(2);
+        nums.add(16);
+        nums.add(20);
+        nums.add(35);
+        nums.add(34);
+        nums.add(34);
+        nums.add(1);
+        nums.add(3);
+        nums.add(2);
         nums.add(2);
         nums.add(2);
         nums.add(12);
@@ -23,6 +29,7 @@ public class Test {
         ops.add('-');
         ops.add('<');
         ops.add('|');
+        ops.add('%');
 
 
         for(int i = 0; i < nums.size(); i++){
@@ -61,7 +68,10 @@ public class Test {
             return num1 | num2;
         }else if(op == '/'){
             return num1 / num2;
-        }else {
+        }else if(op == '%'){
+            return num1 % num2;
+        }
+        else {
             return num1 - num2;
         }
     }

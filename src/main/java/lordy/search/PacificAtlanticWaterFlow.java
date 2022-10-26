@@ -14,20 +14,25 @@ public class PacificAtlanticWaterFlow {
 
     public static List<List<Integer>> pacificAtlantic(int[][] heights){
         List<List<Integer>> res = new ArrayList<>();
+
         if(heights == null || heights.length == 0) return res;
+
         int m = heights.length;
         int n = heights[0].length;
 
-        boolean[][] canPacific = new boolean[m][n];
         boolean[][] canAtlantic = new boolean[m][n];
+        boolean[][] canPacific = new boolean[m][n];
+
         for(int i = 0; i < m; i++){
-            dfs(i, 0, canPacific, heights, heights[i][0]);
-            dfs(i, n - 1, canAtlantic, heights, heights[i][n - 1]);
+            dfs(i, 0, canAtlantic, heights, heights[i][0]);
+            dfs(i, n - 1, canPacific, heights, heights[i][n - 1]);
         }
-        for(int j = 0; j < n; j++){
-            dfs(0, j, canPacific, heights, heights[0][j]);
-            dfs(m - 1, j, canAtlantic, heights, heights[m - 1][j]);
+
+        for(int i = 0; i < n; i++){
+            dfs(0, i, canAtlantic, heights, heights[0][i]);
+            dfs(m - 1, i, canPacific, heights, heights[m - 1][i]);
         }
+
         for(int i = 0; i < m; i++){
             for(int j = 0; j < n; j++){
                 if(canPacific[i][j] && canAtlantic[i][j]){
