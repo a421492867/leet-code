@@ -8,33 +8,29 @@ public class Test {
 
     public static void main(String[] args) {
         List<Integer> nums = new ArrayList<>();
-        nums.add(14);
-        nums.add(31);
-        nums.add(12);
-        nums.add(2);
+        nums.add(1075);
+        nums.add(25);
         nums.add(16);
-        nums.add(20);
-        nums.add(35);
-        nums.add(34);
-        nums.add(34);
-        nums.add(1);
-        nums.add(3);
-        nums.add(2);
-        nums.add(2);
-        nums.add(2);
+        nums.add(31);
+        nums.add(17);
         nums.add(12);
-        nums.add(2);
+        nums.add(20);
+
 
         List<Character> ops = new ArrayList<>();
-        ops.add('-');
-        ops.add('<');
-        ops.add('|');
-        ops.add('%');
+        //ops.add('<');
+        ops.add('*');
+       // ops.add('|');
+        //ops.add('%');
+        ops.add('/');
+        ops.add('p');
+        //ops.add('+');
 
 
         for(int i = 0; i < nums.size(); i++){
             for(int j = 0; j < ops.size(); j++){
                 for(int k = 0; k < nums.size(); k++){
+                    if(k == i) continue;
                     int res = helper(nums.get(i), ops.get(j), nums.get(k));
                     for(int a = 0; a < nums.size(); a++){
                         for(int b = 0; b < ops.size(); b++){
@@ -70,6 +66,10 @@ public class Test {
             return num1 / num2;
         }else if(op == '%'){
             return num1 % num2;
+        }else if(op == '+'){
+            return num1 + num2;
+        }else if(op == 'p'){
+            return (int) Math.pow(num1.doubleValue(), num2.doubleValue());
         }
         else {
             return num1 - num2;

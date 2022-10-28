@@ -10,39 +10,29 @@ import java.util.stream.Collectors;
 /**
  * No.40
  */
-//TODO 超时
 public class CombinationSum {
 
 
     public static List<List<Integer>> combinationSum2(int[] candidates, int target){
-        List<List<Integer>> res = new ArrayList<>();
-        List<Integer> indexList = new ArrayList<>();
-        Arrays.sort(candidates);
-        backtrack(0, res, indexList, candidates, target);
-
-        return res.stream().distinct().collect(Collectors.toList());
+       Arrays.sort(candidates);
+       List<List<Integer>> res = new ArrayList<>();
+       backtrack(candidates, target, new ArrayList<Integer>(), res, 0);
+       return res;
     }
 
-    public static void backtrack(int i, List<List<Integer>> res, List<Integer> indexList, int[] candidates, int target){
-        int result = 0;
-        for(Integer integer : indexList){
-            result += candidates[integer];
-        }
-        if(result == target){
-            List<Integer> list = new ArrayList<>();
-            for(Integer integer : indexList){
-                list.add(candidates[integer]);
-            }
-            res.add(list);
+    public static void backtrack(int[] candidates, int target, List<Integer> list, List<List<Integer>> res, int index){
+        if(target == 0){
+            res.add(new ArrayList<>(list));
             return;
         }
-        if(i >= candidates.length) return;
-        for(int j = i; j < candidates.length && candidates[i] + result <= target; j++){
-            indexList.add(j);
-            backtrack(j + 1, res, indexList, candidates, target);
-            indexList.remove(indexList.size() - 1);
+        for(int i = index; i < candidates.length; i++){
+            if(i > index && candidates[i] == candidates[i - 1]) continue;
+            if(target - candidates[i] >= 0){
+                list.add(candidates[i]);
+                backtrack(candidates, target - candidates[i], list, res, i + 1);
+                list.remove(list.size() - 1);
+            }
         }
-
     }
 
     public static void main(String[] args) {
