@@ -4,6 +4,7 @@ public class Leetcode5 {
 
     public String longestPalindrome(String s){
         int n = s.length();
+
         int l = 0, r = 0;
         for(int i = 0; i < n; i++){
             int len1 = expand(s, i, i);
@@ -17,12 +18,13 @@ public class Leetcode5 {
         return s.substring(l, r + 1);
     }
 
-    public int expand(String s, int i, int j){
+    public int expand(String s, int l, int r){
         int n = s.length();
-        while (i >= 0 && j < n && s.charAt(i) == s.charAt(j)){
-            i--;
-            j++;
+        while (l >= 0 && r < n && s.charAt(l) == s.charAt(r)){
+            l--;
+            r++;
         }
-        return j - i - 1;
+
+        return r - l - 1;
     }
 }
