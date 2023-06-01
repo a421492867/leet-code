@@ -1,5 +1,7 @@
 package lordy.binarysearch;
 
+import java.util.Arrays;
+
 /**
  * No.704
  */
